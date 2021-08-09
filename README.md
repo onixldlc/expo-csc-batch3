@@ -58,7 +58,7 @@ this project is an example to show what an attacker can do to an unsecure chat m
     </br>
 5. open it in browser
 
-    assuming all the step above run with no error and you also deploy it locally, you can open the website now by using `hitch.teehee:3000` or `chat.hitch.teehee:3000`
+    assuming all the step above run with no error and you also deploy it locally, you can open the website now by using `hitch.teehee:3000` or `chat.hitch.teehee:3000` on your browser url
 
     </br>
 
