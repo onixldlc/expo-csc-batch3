@@ -10,9 +10,49 @@ body {
 }
 
 .topChat .top-chat-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: calc(100% - 1px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: auto;
+}
+
+.topChat .top-chat-content .messages {
+  font-family: sans-serif;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.topChat .top-chat-content .messages .username {
+  font-weight: bold;
+  color: red;
+  margin-left: 10px;
+}
+
+.topChat .top-chat-content .messages .divider {
+  font-weight: bold;
+}
+
+.topChat .top-chat-content .messages .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 20px;
+  overflow-wrap: anywhere;
 }
 
 .bottomChat {
