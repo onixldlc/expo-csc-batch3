@@ -1,16 +1,22 @@
-# expo-csc-batch2
+# hitch.teehee
 
-## explanation
+
+## Explanation
 this project is an example to show what an attacker can do to an unsecure chat messaging app and what the defender can do to mitigate the attack
+
+#### project EXPO csc batch 3
+
 <br></br>
 
 ------------------
 ## setup
+<br></br>
 
 1. Dependency
 
 install all the dependency used in this project by going to the backEnd folder and run
 
+	cd backend
 	npm install
 
 2. Setup Domain
@@ -36,9 +42,15 @@ run the node server by simply go to the backEnd folder and run `main.js`
 	cd backend
 	node main.js
 
+5. open it in browser
+
+assuming all the step above run with no error and you also deploy it locally, you can open the website now by using `hitch.teehee:3000` or `chat.hitch.teehee:3000`
+
 
 ------------------
-## versions
+## exploit and defence
+------------------
+## Versions
 <!-- ```
 npm			7.20.5
 nodejs		14.17.4
@@ -56,9 +68,9 @@ socket.io	4.1.3
 ```├─ mongoose	5.13.5```\
 ```└─ socket.io	4.1.3``` -->
 
-`npm	7.20.5`\
-`└─ nodejs	14.17.4`\
-&emsp;&emsp;`├─ express	4.17.1`\
-&emsp;&emsp;`├─ mongodb	4.1.0`\
-&emsp;&emsp;`├─ mongoose	5.13.5`\
-&emsp;&emsp;`└─ socket.io	4.1.3`
+npm	7.20.5\
+└─ nodejs	14.17.4\
+&emsp;&emsp;├─  <a href="https://www.npmjs.com/package/express">express</a>	4.17.1\
+&emsp;&emsp;├─  <a href="https://www.npmjs.com/package/mongodb">mongodb</a>	4.1.0\
+&emsp;&emsp;├─  <a href="https://www.npmjs.com/package/mongoose">mongoose</a>	5.13.5\
+&emsp;&emsp;└─  <a href="https://www.npmjs.com/package/socket.io">socket.io</a>	4.1.3
