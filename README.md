@@ -1,7 +1,7 @@
 # hitch.teehee
 
-![csc](logo_csc_kopong.png)\
->by csc
+![csc](CSC-Logo-kopong-400x400.png)
+>by CSC
 
 ## Explanation
 
@@ -79,6 +79,8 @@ this project is an example to show what an attacker can do to an unsecure chat m
 
 ## Versions
 
+</br>
+
 <!-- ```
 npm			7.20.5
 nodejs		14.17.4
@@ -96,12 +98,12 @@ socket.io	4.1.3
 ```├─ mongoose	5.13.5```\
 ```└─ socket.io	4.1.3``` -->
 
-[npm](https://www.npmjs.com/) 7.20.5\
-[nodejs](https://nodejs.org/en/) 14.17.4\
-[express](https://www.npmjs.com/package/express) 4.17.1\
-[mongodb](https://www.npmjs.com/package/mongodb) 4.1.0\
-[mongoose](https://www.npmjs.com/package/mongoose) 5.13.5\
-[socket.io](https://www.npmjs.com/package/socket.io) 4.1.3
+&emsp;[npm](https://www.npmjs.com/) 7.20.5\
+&emsp;[nodejs](https://nodejs.org/en/) 14.17.4\
+&emsp;[express](https://www.npmjs.com/package/express) 4.17.1\
+&emsp;[mongodb](https://www.npmjs.com/package/mongodb) 4.1.0\
+&emsp;[mongoose](https://www.npmjs.com/package/mongoose) 5.13.5\
+&emsp;[socket.io](https://www.npmjs.com/package/socket.io) 4.1.3
 
 <!-- [npm](https://www.npmjs.com/) 7.20.5\
 └─ [nodejs](https://nodejs.org/en/) 14.17.4\
