@@ -1,6 +1,6 @@
 # hitch.teehee
 
-![csc](CSC-Logo-kopong-400x400.png)
+![csc](public/img/CSC-Logo-kopong-400x400.png)
 >by CSC
 
 ## Explanation

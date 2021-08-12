@@ -42,9 +42,24 @@ function sendInput(username,color,thread){
 
 function init(){
 	var cred = parseURLParams(String(window.location))
-	var username = cred.username;
-	var color = cred.color;
-	var thread = cred.thread;
+	var username; 
+	var color; 
+	var thread; 
+
+	if(cred){
+		username = cred.username;
+		color = cred.color;
+		thread = cred.thread;
+	}
+	else{
+		var container = document.getElementsByClassName("chatContainer")[0];
+		var inputs = container.children[0];
+		var button = container.children[1];
+
+		inputs.style = "pointer-events: none;"
+		inputs.children[0].style = "background-color: #2c2c2c;"
+		button.style = "background-color: #3b3b3b;"
+	}
 
 	fetch("http://chat.hitch.teehee:3000/grab-messages",{
 		method: "POST",
