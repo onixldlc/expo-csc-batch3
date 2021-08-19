@@ -25,10 +25,9 @@ function padLeadingZeros(num, size) {
 
 function createTimestamp(){
 	var date = new Date;
-	var seconds = date.getSeconds();
 	var minutes = date.getMinutes();
 	var hour = date.getHours();
-	return String(`${padLeadingZeros(hour, 2)}:${padLeadingZeros(minutes, 2)}:${padLeadingZeros(seconds, 2)}`);
+	return String(`${padLeadingZeros(hour, 2)}:${padLeadingZeros(minutes, 2)}`);
 }
 
 function sendInput(username,color,thread){

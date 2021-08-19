@@ -1,4 +1,5 @@
 const Messages = require("./message");
+const Users = require("./user")
 
 class dbHandler{
 
@@ -16,6 +17,23 @@ class dbHandler{
 			});
 	}
 
+	saveUser(json){
+		const user = new Users({
+			username: json.username,
+			password: json.password,
+			color: json.color,
+			threads: []
+		});
+		user.save()
+			.catch((err)=>{
+				console.error(err);
+			});
+		}
+
+
+
+
+
 	async findMessageFromThread(thread){
 		var messages = await Messages.find({"thread":thread},function(err ,messages){
 			// console.log(messages)
@@ -28,10 +46,34 @@ class dbHandler{
 			// console.log(messages);
 		// })
 		.catch((err)=>{
-			console.error(err)
+			console.error(err);
 		});
-		return messages
+		return messages;
 	}
+
+	async findUserFromUsers(username){
+		var user = await Users.find({"username":username},function(err, user){
+			return user;
+		})
+		.catch((err)=>{
+			console.error(err);
+		});
+		return user;
+	}
+
+
+
+	
+	async checkIfUserExist(username){
+		var user = await Users.find({"username":username},function(err, user){
+			return user;
+		})
+		.catch((err)=>{
+			console.error(err);
+		});
+		return user;
+	}
+
 }
 
 module.exports = dbHandler

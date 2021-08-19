@@ -1,6 +1,11 @@
 body {
   height: 100%;
   margin: 0;
+  font-family: sans-serif;
+}
+
+body .invisible-inputs {
+  display: none;
 }
 
 .top {
@@ -120,6 +125,7 @@ body {
 .bottom .rooms input:checked + label .threads {
   cursor: default;
   background-color: #2a2a2f;
+  pointer-events: none;
 }
 
 .bottom .chat {
@@ -211,6 +217,7 @@ body {
           justify-content: center;
   font-family: sans-serif;
   color: white;
+  cursor: pointer;
 }
 
 .login-container .login-prompt .login-prompt-top label .login {
@@ -219,5 +226,99 @@ body {
 
 .login-container .login-prompt .login-prompt-top label .guess {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-container .login-prompt .login-prompt-top input:checked + label .prompt-button {
+  border-bottom: 1px solid #2d2d2d;
+  cursor: default;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 15px;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .text-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .text-input input {
+  margin-bottom: 10px;
+  background-color: #282828;
+  border: transparent solid 1px;
+  color: white;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .sign {
+  color: #717171;
+  font-size: 10px;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button input {
+  background-color: #282828;
+  border: transparent;
+  height: 30px;
+  cursor: pointer;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .devider {
+  width: 100%;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button button {
+  height: 30px;
+  width: 70px;
+  border: transparent solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .create-button {
+  background-color: #86ff98;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .create-button:hover {
+  background-color: #61cf71;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .create-button:active {
+  background-color: #49a056;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .close-button {
+  background-color: #ff7979;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .close-button:hover {
+  background-color: #cf6262;
+}
+
+.login-container .login-prompt .login-prompt-bottom .prompt-form .color-input-and-button .close-button:active {
+  background-color: #883f3f;
 }
 /*# sourceMappingURL=home.css.map */

@@ -29,6 +29,32 @@ function init(){
 	};
 };
 
+function padLeadingZeros(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function createTimestamp(){
+	var date = new Date;
+	var minutes = date.getMinutes();
+	var hour = date.getHours();
+	return String(`${padLeadingZeros(hour, 2)}:${padLeadingZeros(minutes, 2)}`);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post('/grab-messages',(req, res) => {
 	req.on('data', async (data,err)=>{
 		if(err) res.status(404).send({error: "invalid json"});
@@ -43,11 +69,94 @@ app.post('/grab-messages',(req, res) => {
 	})
 })
 
+/*
+app.post('/login',(req, res) => {
+	req.on('data', async (data,err)=>{
+		if(err) res.status(404).send({error: "invalid json"});
+		req.body = JSON.parse(data);
+		
+		var message = [];
+		if(req.body.thread != 'global' ){
+			message = await db.findMessageFromThread(req.body.thread);
+			console.log(message);
+		}
+		res.send(message);
+	})
+})
+*/
+
+app.post('/register',(req, res) => {
+	req.on('data', async (data,err)=>{
+		if(err) res.status(404).send({error: "invalid json"});
+			req.body = JSON.parse(data);
+		
+		var user = [];
+		if(req.body != undefined ){
+			user = db.saveUser(req.body);
+			console.log({"status":"success"});
+			res.send({"status":"success"});
+		}
+		else{
+			res.send({"status":"failed"});
+		}
+	})
+})
+
+app.post('/check-if-user-exist',(req, res) => {
+	req.on('data', async (data,err)=>{
+		if(err) res.status(404).send({error: "invalid json"});
+			req.body = JSON.parse(data);
+		
+		var usernameCheck;
+		if(req.body != undefined ){
+			usernameCheck = await db.checkIfUserExist(req.body.username);
+			// console.log({"status":"success"}, String(usernameCheck), usernameCheck, usernameCheck == "");
+			if(usernameCheck == ""){
+				res.send({"status":"success"});
+				// res.send(usernameCheck);
+			}
+			else{
+				res.send({"status":"failed"});
+			}
+		}
+		else{
+			res.send({"status":"failed"});
+		}
+	})
+})
+
+app.post('/send',(req, res) =>{
+	req.on('data', async (data,err)=>{
+		if(err) res.status(404).send({error: "invalid json"});
+			json = JSON.parse(data);
+			var subdom = req.subdomains; 
+		if(json != undefined && subdom.includes("api")){
+			io.emit('message',{"timestamp":createTimestamp(),"username":json.username,"message":json.message,"color":json.color,"thread":json.thread} );
+			res.send({"status":"success"});
+		}
+		else{
+			res.send({"status":"failed"});
+		}
+	})
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 io.on('connection', (socket) => {
 		socket.on('loadMessage',(thread)=>{
 			var message = [];
-			if(thread != 'global' ){
+			if(thread != 'global'){
 				message = db.findMessageFromThread(thread)
 			}
 			io.emit('loadMessage')
@@ -55,13 +164,12 @@ io.on('connection', (socket) => {
 
 		socket.on('message', (json) => {
 				console.log(json);
-				if(json.thread != "global"){
+				if(json.thread != "global" && json.thread != 'Global' ){
 					db.saveMessage(json)
 				}
 				io.emit('message',{"timestamp":json.timestamp,"username":json.username,"message":json.message,"color":json.color,"thread":json.thread} );
         });
 });
-
 
 initGet('/','public/index.html');
 init()
