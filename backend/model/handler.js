@@ -62,7 +62,6 @@ class dbHandler{
 	}
 
 
-
 	
 	async checkIfUserExist(username){
 		var user = await Users.find({"username":username},function(err, user){

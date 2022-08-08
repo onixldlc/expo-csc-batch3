@@ -63,7 +63,7 @@ app.post('/grab-messages',(req, res) => {
 		var message = [];
 		if(req.body.thread != 'global' ){
 			message = await db.findMessageFromThread(req.body.thread);
-			console.log(message);
+			// console.log(message);
 		}
 		res.send(message);
 	})
@@ -125,6 +125,35 @@ app.post('/check-if-user-exist',(req, res) => {
 	})
 })
 
+app.post('/auth',(req, res) => {
+	req.on('data', async (data,err)=>{
+		if(err) res.status(404).send({error: "invalid json"});
+			req.body = JSON.parse(data);
+		
+		var usernameCheck;
+		if(req.body != undefined){
+			usernameCheck = (await db.checkIfUserExist(req.body.username))[0];
+			console.log(usernameCheck, req.body)
+			if(usernameCheck == undefined){
+				res.send({"status":"failed"});
+				console.log("username was undefined")	
+			}
+			else{
+				console.log("login process")
+				if(req.body.password == usernameCheck.password){
+					res.send({"status":"success", "color":usernameCheck.color});
+				}else{
+					res.send({"status":"failed"});
+				}
+			}
+		}
+		else{
+			console.log("there was an error in the body")
+			res.send({"status":"failed"});
+		}
+	})
+})
+
 app.post('/send',(req, res) =>{
 	req.on('data', async (data,err)=>{
 		if(err) res.status(404).send({error: "invalid json"});
@@ -163,7 +192,7 @@ io.on('connection', (socket) => {
 		})
 
 		socket.on('message', (json) => {
-				console.log(json);
+				// console.log(json);
 				if(json.thread != "global" && json.thread != 'Global' ){
 					db.saveMessage(json)
 				}
