@@ -374,6 +374,25 @@ async function loginType(){
 	
 	if(type == "login"){
 		bottomPrompt.innerHTML = loginUser()
+
+		bottomPrompt.getElementsByTagName("button")[0].onclick = async function(){
+			var json = grabInput();
+			var check = await authenticate(json);
+
+			console.log(check);
+	
+			if(check.status == "success"){
+				closePrompt()
+			}
+			else{
+				alert("invalid user")
+			}
+		}
+
+		
+
+		var json = grabInput();
+		var check = await checkIfExist(json);
 		
 	}
 	else if(type == "guess"){
@@ -412,12 +431,26 @@ async function loginType(){
 function grabInput(){
 	credJson["username"] = document.getElementById("username").value;
 	credJson["password"] = document.getElementById("password").value;
-	credJson["color"] = (document.getElementById("color").value).substring(1);
+	credJson["color"] = (document.getElementById("color")) ? (document.getElementById("color").value).substring(1) : "000000";
+	// credJson["color"] = (document.getElementById("color").value).substring(1) || "000000";
 	return credJson
 }
 
+function authenticate(credJson){
+	var data = fetch(String(document.location).replace('home', 'auth'),{
+		method: "POST",
+		headers: {"Content-Type":"application/json"},
+		body: JSON.stringify({"username":credJson.username, "password":credJson.password}),
+	})
+	.then(response => response.json())
+	.then(data => {
+		return data;
+	})
+	return data;
+}
+
 function checkIfExist(credJson){
-	var data = fetch("http://hitch.teehee:3000/check-if-user-exist",{
+	var data = fetch(String(document.location).replace('home', 'check-if-user-exist'),{
 		method: "POST",
 		headers: {"Content-Type":"application/json"},
 		body: JSON.stringify({"username":credJson.username}),
@@ -435,8 +468,7 @@ async function register(credJson){
 	if(check.status != "success"){
 		return {"status":"failed"}
 	}
-
-	var data = await fetch("http://hitch.teehee:3000/register",{
+	var data = await fetch(String(document.location).replace('home', 'register'),{
 		method: "POST",
 		headers: {"Content-Type":"application/json"},
 		body: JSON.stringify(credJson),
@@ -449,5 +481,6 @@ async function register(credJson){
 }
 
 
+
 var credJson = {};
-init()
+init();
